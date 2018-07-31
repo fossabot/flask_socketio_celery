@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+
+  <div class="container mt20" style="margin-bottom: 80px; min-height: 300px">
+    {% include "partials/flash.html" %}
+
+    <form class="form-signin" action="{{ url_for('user.login') }}" method="post">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+      <h4 class="form-signin-heading mb20">登录</h4>
+      <input class="textinput textInput form-control" id="id_username" name="username" placeholder="用户名(必填)" type="text" required="">
+      <input class="textinput textInput form-control" id="id_password" name="password" placeholder="密码(必填)" type="password" required="">
+
+      <div class="form-group mt20">
+        <button type="submit" class="btn btn-outline-primary btn-block">登录</button>
+        <input type="hidden" name="submit" value="submit" />
+      </div>
+    </form>
+  </div>
+
+{% endblock content %}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <title>
+      {% block title %}
+        flask_socketio_celery
+      {% endblock %}
+    </title>
+    <meta charset="utf-8">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/helper.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/product.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/socket.io.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/g2.min.js') }}"></script>
+
+    {% block css %}{% endblock %}
+
+  </head>
+<body>
+
+  {% include "partials/navbar.html" %}
+
+  {% block content %}
+  {% endblock %}
+
+  {% include "partials/footer.html" %}
+
+  {% block pagejs %}
+  {% endblock %}
+</body>
+</html>

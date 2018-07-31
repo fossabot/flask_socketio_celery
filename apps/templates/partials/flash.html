@@ -1,0 +1,28 @@
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages and not form %}
+  {% for category, message in messages %}
+    {% if category and category == 'warning' %}
+      <div class="alert alert-danger">{{ message }}</div>
+    {% else %}
+      <div class="alert alert-{{ category }}">{{ message }}</div>
+    {% endif %}
+  {% endfor %}
+{% endif %}
+{% endwith %}
+
+{% if form %}
+  {% if form.errors %}
+    <div class="alert alert-danger">
+      {% for field in form %}
+        {% if field.errors %}
+          {% for error in field.errors %}
+            <li>{{ error|escape }}</li>
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+      {% if form.non_field_errors %}
+        {{ form.non_field_errors }}
+      {% endif %}
+    </div>
+  {% endif %}
+{% endif %}

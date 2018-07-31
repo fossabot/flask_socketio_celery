@@ -9,9 +9,7 @@
         <div class="container">
           <h1 class="display-3 jumbotron-heading">flask_socketio_celery</h1>
           {% if current_user and current_user.is_authenticated %}
-            <a href="{{ url_for('socketio.example')}}" class="btn btn-outline-primary my-2" >进入实时更新折线图示例</a>
-          {% else %}
-            <a href="{{ url_for('user.login')}}" class="btn btn-outline-primary my-2">登录</a>
+            <a href="{{ url_for('socketio.index')}}" class="btn btn-outline-primary my-2" >进入实时更新折线图示例</a>
           {% endif %}
         </div>
       </section>

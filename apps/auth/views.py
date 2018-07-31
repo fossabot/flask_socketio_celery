@@ -25,7 +25,7 @@ def login():
             return redirect(redirect_url)
         else:
             flash_errors(form, category='danger')
-    return render_template('user/login.html', form=form)
+    return render_template('auth/login.html', form=form)
 
 
 @blueprint.route('/signup/', methods=['GET', 'POST'])
@@ -40,7 +40,7 @@ def signup():
         return redirect(url_for('public.index'))
     else:
         flash_errors(form)
-    return render_template('user/signup.html', form=form)
+    return render_template('auth/signup.html', form=form)
 
 
 @blueprint.route('/logout/')

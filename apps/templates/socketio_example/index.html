@@ -1,0 +1,162 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+
+  <div class="container mt20" style="margin-bottom: 80px; min-height: 300px">
+    {% include "partials/flash.html" %}
+
+    <div class="alert alert-info ptn pbn mb20" role="alert">
+      <div class="row">
+        <div class="col-sm">
+          <p id="websocket_status" style="margin-top: 16px">实时连接状态</p>
+        </div>
+
+        <div class="col-sm">
+          <div class="btn-group" role="group" aria-label="Basic example" style="margin-top: 8px; float: right;">
+          <button type="button" class="btn btn-outline-primary" id="admin-send-notify">发送通知</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt20">
+      <div class="col-12 col-md-12">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">实时更新折线图</h3>
+            <div id="c1"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pagejs %}
+  <script>
+    const websocketURL = 'http://' + window.location.host;
+    const socket = io(websocketURL);
+    const username = $('#nav-user').text();
+    const userID = $('#nav-user').attr('data-user-id');
+
+    socket.on('connect', function() {
+        console.log('======== ' + socket.id + userID + ' Connected ========');
+        socket.emit('user_bind_sid', {
+          sid: socket.id,
+          user_id: userID
+        });
+        $('#websocket_status').text('实时连接状态：已连接')
+
+        socket.emit('join', {
+          user_id: userID
+        });
+    });
+
+    socket.on('message', function(msg) {
+        console.log('======== message ==========');
+        console.log(msg)
+    });
+
+    socket.on('admin_notify', function(msg) {
+      console.log('======== notify_finish ========');
+      console.log(msg);
+      if (msg) {
+        swal({
+          position: 'top-end',
+          type: 'info',
+          title: msg['message'],
+          showConfirmButton: false,
+          timer: 3000
+        });
+      }
+    })
+
+    const base = +new Date(2014, 9, 3);
+    const oneDay = 24 * 3600 * 1000;
+    const date = [];
+
+    const data = [];
+    const values = [Math.random() * 150];
+    let now = new Date(base);
+
+    function addData(shift) {
+      const item = {};
+      now = [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/');
+      item.date = now;
+      item.value = (Math.random() - 0.4) * 10 + values[values.length - 1];
+      values.push(item.value);
+      now = new Date(+new Date(now) + oneDay);
+      data.push(item);
+    }
+
+    // 创建图表
+    const chart = new G2.Chart({
+      container: 'c1',
+      forceFit: true, // 宽度自适应
+      height: 360,
+      animate: false
+    });
+    // 声明字段度量类型
+    chart.source(data);
+    chart.tooltip({
+      crosshairs: {
+        type: 'line'
+      }
+    });
+    chart.line().position('date*value').color('#f80').size(3);
+    chart.area().position('date*value').color('#f80');
+    chart.render();
+
+    let init = true;
+    setInterval(function () {
+      if (init) { // 第一次载入数据
+        for (let i = 1; i < 100; i++) {
+          addData();
+        }
+        init = false;
+      }
+      addData();
+      chart.changeData(data); // 动态更新数据
+    }, 700);
+
+    $('#admin-send-notify').click(function() {
+      swal({
+        title: '发送通知',
+        html:
+          '<div>' +
+          '<input type="text" class="form-control" id="notify-input">'+
+          '</div>',
+        showCancelButton: true,
+        confirmButtonText: '发送',
+        cancelButtonText: '取消',
+        focusConfirm: false,
+        allowEscapeKey: false,
+        allowOutsideClick: false,
+        inputValidator: (value) => {
+          return !value && 'You need to write something!'
+        },
+        preConfirm: () => {
+          var notify = $('#notify-input').val();
+          if (notify) {
+            socket.emit('admin_notify_receive', {
+              message: notify
+            });
+          }
+        }
+      }).then((result) => {
+        if (result.value) {
+          swal({
+            title:'发送通知成功！',
+            type: 'success',
+            allowEscapeKey: false,
+            allowOutsideClick: false,
+          });
+        }
+      })
+    })
+
+  </script>
+{% endblock %}
+

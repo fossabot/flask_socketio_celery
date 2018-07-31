@@ -1,0 +1,45 @@
+INFO 2018-07-31 23:43:05 pubsub_manager redis backend initialized.
+INFO 2018-07-31 23:43:05 views 21af6384a8854ba3bd0ab7bfa00b4f4f Connected
+INFO 2018-07-31 23:43:05 server emitting event "message" to 21af6384a8854ba3bd0ab7bfa00b4f4f [/]
+INFO 2018-07-31 23:43:05 server received event "user_bind_sid" from 21af6384a8854ba3bd0ab7bfa00b4f4f [/]
+INFO 2018-07-31 23:43:06 server received event "join" from 21af6384a8854ba3bd0ab7bfa00b4f4f [/]
+INFO 2018-07-31 23:43:06 server 21af6384a8854ba3bd0ab7bfa00b4f4f is entering room 1 [/]
+INFO 2018-07-31 23:43:06 server emitting event "message" to 1 [/]
+INFO 2018-07-31 23:43:53 views 38af132e622a4bd4808b27044e279719 Connected
+INFO 2018-07-31 23:43:53 server emitting event "message" to 38af132e622a4bd4808b27044e279719 [/]
+INFO 2018-07-31 23:43:53 server received event "user_bind_sid" from 38af132e622a4bd4808b27044e279719 [/]
+INFO 2018-07-31 23:43:53 server received event "join" from 38af132e622a4bd4808b27044e279719 [/]
+INFO 2018-07-31 23:43:53 server 38af132e622a4bd4808b27044e279719 is entering room 1 [/]
+INFO 2018-07-31 23:43:53 server emitting event "message" to 1 [/]
+INFO 2018-07-31 23:44:01 views ad3858d9bb9d4268adcb7c1c5df91eb6 Connected
+INFO 2018-07-31 23:44:01 server emitting event "message" to ad3858d9bb9d4268adcb7c1c5df91eb6 [/]
+INFO 2018-07-31 23:44:01 server received event "user_bind_sid" from ad3858d9bb9d4268adcb7c1c5df91eb6 [/]
+INFO 2018-07-31 23:44:02 server received event "join" from ad3858d9bb9d4268adcb7c1c5df91eb6 [/]
+INFO 2018-07-31 23:44:02 server ad3858d9bb9d4268adcb7c1c5df91eb6 is entering room 1 [/]
+INFO 2018-07-31 23:44:02 server emitting event "message" to 1 [/]
+INFO 2018-07-31 23:44:30 server received event "admin_notify_receive" from ad3858d9bb9d4268adcb7c1c5df91eb6 [/]
+INFO 2018-07-31 23:44:30 server emitting event "admin_notify" to all [/]
+INFO 2018-07-31 23:44:53 views 3302124c014847859fb0855c0248559c Connected
+INFO 2018-07-31 23:44:53 server emitting event "message" to 3302124c014847859fb0855c0248559c [/]
+INFO 2018-07-31 23:44:53 server received event "user_bind_sid" from 3302124c014847859fb0855c0248559c [/]
+INFO 2018-07-31 23:44:54 server received event "join" from 3302124c014847859fb0855c0248559c [/]
+INFO 2018-07-31 23:44:54 server 3302124c014847859fb0855c0248559c is entering room 1 [/]
+INFO 2018-07-31 23:44:54 server emitting event "message" to 1 [/]
+INFO 2018-07-31 23:45:03 views 19013ee0c7da4557aa655a06db18da67 Connected
+INFO 2018-07-31 23:45:03 server emitting event "message" to 19013ee0c7da4557aa655a06db18da67 [/]
+INFO 2018-07-31 23:45:03 server received event "user_bind_sid" from 19013ee0c7da4557aa655a06db18da67 [/]
+INFO 2018-07-31 23:45:03 server received event "join" from 19013ee0c7da4557aa655a06db18da67 [/]
+INFO 2018-07-31 23:45:03 server 19013ee0c7da4557aa655a06db18da67 is entering room 1 [/]
+INFO 2018-07-31 23:45:03 server emitting event "message" to 1 [/]
+INFO 2018-07-31 23:45:35 views d633ccc2ff1b4f65a115df06d06b4468 Connected
+INFO 2018-07-31 23:45:35 server emitting event "message" to d633ccc2ff1b4f65a115df06d06b4468 [/]
+INFO 2018-07-31 23:45:35 server received event "user_bind_sid" from d633ccc2ff1b4f65a115df06d06b4468 [/]
+INFO 2018-07-31 23:45:35 server received event "join" from d633ccc2ff1b4f65a115df06d06b4468 [/]
+INFO 2018-07-31 23:45:35 server d633ccc2ff1b4f65a115df06d06b4468 is entering room 1 [/]
+INFO 2018-07-31 23:45:35 server emitting event "message" to 1 [/]
+INFO 2018-07-31 23:46:14 views 9b6764b818a940f7b7719f0f5454badb Connected
+INFO 2018-07-31 23:46:14 server emitting event "message" to 9b6764b818a940f7b7719f0f5454badb [/]
+INFO 2018-07-31 23:46:14 server received event "user_bind_sid" from 9b6764b818a940f7b7719f0f5454badb [/]
+INFO 2018-07-31 23:46:14 server received event "join" from 9b6764b818a940f7b7719f0f5454badb [/]
+INFO 2018-07-31 23:46:14 server 9b6764b818a940f7b7719f0f5454badb is entering room 1 [/]
+INFO 2018-07-31 23:46:14 server emitting event "message" to 1 [/]

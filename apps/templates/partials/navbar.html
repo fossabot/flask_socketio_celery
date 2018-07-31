@@ -13,14 +13,14 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="http://example.com" id="nav-user" data-user-id="{{ current_user.id }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{current_user.username}}</a>
               <div class="dropdown-menu" aria-labelledby="nav-user">
-                <a class="dropdown-item" href="{{ url_for('user.logout') }}">退出</a>
+                <a class="dropdown-item" href="{{ url_for('auth.logout') }}">退出</a>
               </div>
             </li>
           </ul>
         {% else %}
           <ul class="navbar-nav">
-            <a href="{{ url_for('user.login') }}" class="btn btn-outline-success mr10">登录</a>
-            <a href="{{ url_for('user.signup') }}" class="btn btn-outline-success mr10">注册</a>
+            <a href="{{ url_for('auth.login') }}" class="btn btn-outline-success mr10">登录</a>
+            <a href="{{ url_for('auth.signup') }}" class="btn btn-outline-success mr10">注册</a>
           </ul>
         {% endif %}
       </div>

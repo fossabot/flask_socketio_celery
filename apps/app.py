@@ -5,7 +5,7 @@ from flask import Flask, render_template
 from apps.extensions import (bcrypt, cache, csrf_protect, db,
                              login_manager, migrate, socketio)
 from apps.settings import ProdConfig
-from apps import commands, public, auth
+from apps import commands, public, auth, socketio_example
 
 
 eventlet.monkey_patch()    # use celery with socketio need some monkey_patch
@@ -38,6 +38,7 @@ def register_extensions(app):
 def register_blueprints(app):
     app.register_blueprint(public.views.blueprint)
     app.register_blueprint(auth.views.blueprint)
+    app.register_blueprint(socketio_example.views.blueprint)
     return None
 
 

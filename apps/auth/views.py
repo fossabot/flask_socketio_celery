@@ -2,11 +2,11 @@ from flask import Blueprint, flash, redirect, render_template, request, url_for
 from flask_login import login_required, login_user, logout_user
 
 from apps.extensions import login_manager
-from apps.user.forms import LoginForm, RegisterForm
-from apps.user.models import User
+from apps.auth.forms import LoginForm, RegisterForm
+from apps.auth.models import User
 from apps.utils import flash_errors
 
-blueprint = Blueprint('user', __name__, url_prefix='/users')
+blueprint = Blueprint('auth', __name__, url_prefix='/auth')
 
 
 @login_manager.user_loader
@@ -40,7 +40,7 @@ def signup():
         return redirect(url_for('public.index'))
     else:
         flash_errors(form)
-    return render_template('public/signup.html', form=form)
+    return render_template('user/signup.html', form=form)
 
 
 @blueprint.route('/logout/')

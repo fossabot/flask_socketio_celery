@@ -2,16 +2,16 @@ import datetime as dt
 from flask_login import UserMixin
 
 from apps.database import (Column, Model, SurrogatePK, db,
-                                      reference_col, relationship)
+                           reference_col, relationship)
 from apps.extensions import bcrypt
 
 
 class Role(SurrogatePK, Model):
     """A role for a user."""
 
-    __tablename__ = 'roles'
+    __tablename__ = 'auth_roles'
     name = Column(db.String(80), unique=True, nullable=False)
-    user_id = reference_col('users', nullable=True)
+    user_id = reference_col('auth_users', nullable=True)
     user = relationship('User', backref='roles')
 
     def __init__(self, name, **kwargs):
@@ -26,7 +26,7 @@ class Role(SurrogatePK, Model):
 class User(UserMixin, SurrogatePK, Model):
     """A user of the app."""
 
-    __tablename__ = 'users'
+    __tablename__ = 'auth_users'
     username = Column(db.String(80), unique=True, nullable=False)
     email = Column(db.String(80), unique=True, nullable=True)
     #: The hashed password

@@ -5,7 +5,7 @@ from flask import Flask, render_template
 from apps.extensions import (bcrypt, cache, csrf_protect, db,
                              login_manager, migrate, socketio)
 from apps.settings import ProdConfig
-from apps import commands, public, user
+from apps import commands, public, auth
 
 
 eventlet.monkey_patch()    # use celery with socketio need some monkey_patch
@@ -37,7 +37,7 @@ def register_extensions(app):
 
 def register_blueprints(app):
     app.register_blueprint(public.views.blueprint)
-    app.register_blueprint(user.views.blueprint)
+    app.register_blueprint(auth.views.blueprint)
     return None
 
 
@@ -62,7 +62,8 @@ def register_shellcontext(app):
         """Shell context objects."""
         return {
             'db': db,
-            'User': user.models.User,
+            'User': auth.models.User,
+            'Role': auth.models.Role,
         }
 
     app.shell_context_processor(shell_context)

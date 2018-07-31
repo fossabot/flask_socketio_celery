@@ -2,7 +2,7 @@ from flask import Blueprint, flash, redirect, render_template, request, url_for
 from flask_login import login_required, login_user, logout_user
 
 from apps.extensions import login_manager
-from apps.user.forms import LoginForm
+from apps.user.forms import LoginForm, RegisterForm
 from apps.user.models import User
 from apps.utils import flash_errors
 
@@ -26,6 +26,21 @@ def login():
         else:
             flash_errors(form, category='danger')
     return render_template('user/login.html', form=form)
+
+
+@blueprint.route('/signup/', methods=['GET', 'POST'])
+def signup():
+    form = RegisterForm(request.form)
+    if form.validate_on_submit():
+        User.create(
+            username=form.username.data,
+            password=form.password.data,
+            active=True)
+        flash('注册成功，请登录', 'success')
+        return redirect(url_for('public.index'))
+    else:
+        flash_errors(form)
+    return render_template('public/signup.html', form=form)
 
 
 @blueprint.route('/logout/')

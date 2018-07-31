@@ -1,20 +1,14 @@
 """User forms."""
 from flask_wtf import FlaskForm
 from wtforms import PasswordField, StringField
-from wtforms.validators import DataRequired, Email, EqualTo, Length
+from wtforms.validators import DataRequired, EqualTo, Length
 from .models import User
 
 
 class RegisterForm(FlaskForm):
-    """Register form."""
-
     username = StringField(
         'Username', validators=[DataRequired(),
                                 Length(min=3, max=25)])
-    email = StringField(
-        'Email', validators=[DataRequired(),
-                             Email(),
-                             Length(min=6, max=40)])
     password = PasswordField(
         'Password', validators=[DataRequired(),
                                 Length(min=6, max=40)])
@@ -37,15 +31,10 @@ class RegisterForm(FlaskForm):
             self.username.errors.append('用户名已被使用')
             return False
         user = User.query.filter_by(email=self.email.data).first()
-        if user:
-            self.email.errors.append('邮箱已被使用')
-            return False
         return True
 
 
 class LoginForm(FlaskForm):
-    """Login form."""
-
     username = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
 

@@ -17,6 +17,11 @@
               </div>
             </li>
           </ul>
+        {% else %}
+          <ul class="navbar-nav">
+            <a href="{% url 'user:login' %}" class="btn btn-outline-success mr10">登录</a>
+            <a href="{% url 'user:signup' %}" class="btn btn-outline-success mr10">注册</a>
+          </ul>
         {% endif %}
       </div>
     </div>

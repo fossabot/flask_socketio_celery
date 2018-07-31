@@ -26,7 +26,7 @@ class DevConfig(Config):
 
     ENV = 'dev'
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'postgresql://localhost/stock_simulator_development'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://localhost/flask_socketio_celery_development'
 
 
 class ProdConfig(Config):
@@ -34,4 +34,4 @@ class ProdConfig(Config):
 
     ENV = 'prod'
     DEBUG = False
-    SQLALCHEMY_DATABASE_URI = 'postgresql://root:j&#nurxmvwj&@localhost/stock_simulator_production'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://localhost/flask_socketio_celery_production'

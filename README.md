@@ -12,7 +12,7 @@ flask + socketio + celery 实时更新应用的示例
 
 展示的效果不是很好，但是意思没错
 
-[gif](https://breakwire.oss-cn-shanghai.aliyuncs.com/flask-socketio.gif)
+![gif](https://breakwire.oss-cn-shanghai.aliyuncs.com/flask-socketio.gif)
 
 部署的话也很简单，可以直接 flask run，因为根据 flask-socketio 的文档，他封装的已经是 production ready 的了，
 如果你还是想用 gunicorn 配合 nginx 的话也很简单，参考 [flask-socketio](https://flask-socketio.readthedocs.io/en/latest/)

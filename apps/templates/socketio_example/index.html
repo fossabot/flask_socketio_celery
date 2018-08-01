@@ -73,24 +73,8 @@
       }
     })
 
-    const base = +new Date(2014, 9, 3);
-    const oneDay = 24 * 3600 * 1000;
-    const date = [];
 
-    const data = [];
-    const values = [Math.random() * 150];
-    let now = new Date(base);
-
-    function addData(shift) {
-      const item = {};
-      now = [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/');
-      item.date = now;
-      item.value = (Math.random() - 0.4) * 10 + values[values.length - 1];
-      values.push(item.value);
-      now = new Date(+new Date(now) + oneDay);
-      data.push(item);
-    }
-
+    const data = [{date: "2018-08-01 12:00:00", value: 10}];
     // 创建图表
     const chart = new G2.Chart({
       container: 'c1',
@@ -105,21 +89,24 @@
         type: 'line'
       }
     });
+    chart.scale({
+      date: {
+        type: 'time',
+        mask: 'HH:mm:ss',
+        alias: '日期'
+      }
+    });
     chart.line().position('date*value').color('#f80').size(3);
     chart.area().position('date*value').color('#f80');
     chart.render();
 
-    let init = true;
-    setInterval(function () {
-      if (init) { // 第一次载入数据
-        for (let i = 1; i < 100; i++) {
-          addData();
-        }
-        init = false;
+    socket.on('realtime_chart', function(msg) {
+      console.log('======== realtime_chart ========');
+      console.log(msg);
+      if (msg) {
+        chart.changeData(msg);
       }
-      addData();
-      chart.changeData(data); // 动态更新数据
-    }, 700);
+    })
 
     $('#admin-send-notify').click(function() {
       swal({
@@ -132,10 +119,8 @@
         confirmButtonText: '发送',
         cancelButtonText: '取消',
         focusConfirm: false,
-        allowEscapeKey: false,
-        allowOutsideClick: false,
         inputValidator: (value) => {
-          return !value && 'You need to write something!'
+          return !value && '请输入通知内容'
         },
         preConfirm: () => {
           var notify = $('#notify-input').val();

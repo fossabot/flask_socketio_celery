@@ -58,11 +58,3 @@ def admin_notify_receive(message):
     """
     if message:
         socketio.emit('admin_notify', message)
-
-
-@socketio.on('realtime_chart')
-def realtime_chart(message):
-    """
-        实时更新图表
-    """
-    pass

@@ -13,7 +13,12 @@ flask + socketio + celery 实时更新应用的示例
 展示的效果不是很好，但是意思没错
 
 ![gif](./flask-socketio.gif)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Flsdlab%2Fflask_socketio_celery.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Flsdlab%2Fflask_socketio_celery?ref=badge_shield)
 
 部署的话也很简单，可以直接 flask run，因为根据 flask-socketio 的文档，他封装的已经是 production ready 的了，
 如果你还是想用 gunicorn 配合 nginx 的话也很简单，参考 [flask-socketio](https://flask-socketio.readthedocs.io/en/latest/)
 的 Deployment 就可以了，nginx 开一个端口，然后代理到 gunicorn 就可以了，然后把这些东西都配置到 supervisor 里面就可以了。
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Flsdlab%2Fflask_socketio_celery.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Flsdlab%2Fflask_socketio_celery?ref=badge_large)
